@@ -52,7 +52,28 @@ public class Transition {
 
     @Override
     public String toString() {
-        return "(" + state + ", " + read + ") = (" + nextState + ", " + write + ", " + move + ")";
+        return String.format("(%-10s, %c) = (%-10s, %c, %c)",
+                buildStateString(state),
+                read,
+                buildStateString(nextState),
+                write,
+                move);
+    }
+
+    /**
+     * Hilfsmethode um den Zustand in einen String zu konvertieren
+     *
+     * @param state der Zustand
+     * @return der Zustand als String
+     */
+    private String buildStateString(int state) {
+        String stateStr = "q" + state;
+        if (state == 1) {
+            stateStr += " Start";
+        } else if (state == 2) {
+            stateStr += " Ende";
+        }
+        return stateStr;
     }
 }
 

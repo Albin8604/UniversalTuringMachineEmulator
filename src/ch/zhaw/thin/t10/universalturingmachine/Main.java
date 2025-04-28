@@ -26,6 +26,11 @@ public class Main {
         String tmCoding = IO_HANDLER.readString("Bitte gebe deine TM Codierung ein (Binaer): ");
         List<Transition> transitions = parseTmCoding(tmCoding);
 
+        IO_HANDLER.println("Übersetzte TM-Codierung:");
+        for (Transition transition : transitions) {
+            IO_HANDLER.println(transition.toString());
+        }
+
         String input = IO_HANDLER.readString("Bitte gebe die Eingabe für die TM ein: ");
 
         boolean stepMode = IO_HANDLER.readBoolean("Möchten Sie im Step-Modus ausführen?");
