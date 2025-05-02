@@ -31,7 +31,18 @@ public class Main {
             IO_HANDLER.println(transition.toString());
         }
 
-        String input = IO_HANDLER.readString("Bitte gebe die Eingabe für die TM ein: ");
+        String input = IO_HANDLER.readString("Bitte gebe die Eingabe für die TM ein (falls Dezimal, dann bitte 'd' am schluss anfuegen): ");
+
+        if (input.contains("d")){
+            input = input.replace("d", "");
+            final int inputInDecimal = Integer.parseInt(input);
+            input = "";
+            for (int i = 0; i < inputInDecimal; i++) {
+                input += "1";
+            }
+
+            System.out.println("Deine Eingabe in Unaer: " + input);
+        }
 
         boolean stepMode = IO_HANDLER.readBoolean("Möchten Sie im Step-Modus ausführen?");
 
