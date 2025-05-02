@@ -33,7 +33,7 @@ public class Main {
 
         String input = IO_HANDLER.readString("Bitte gebe die Eingabe für die TM ein (falls Dezimal, dann bitte 'd' am schluss anfuegen): ");
 
-        if (input.contains("d")){
+        if (input.contains("d")) {
             input = input.replace("d", "");
             final int inputInDecimal = Integer.parseInt(input);
             input = "";
@@ -48,22 +48,18 @@ public class Main {
 
         TuringMachine turingMachine = new TuringMachine(transitions, input);
 
-        if (stepMode) {
-            do {
-                displayMachineState(turingMachine);
-                if (turingMachine.isHalted()) {
-                    IO_HANDLER.println("Die Turingmaschine hat angehalten.");
-                    break;
-                }
-                IO_HANDLER.waitForEnter("Drücken Sie Enter für den nächsten Schritt...");
-            } while (turingMachine.step());
-
+        do {
+            displayMachineState(turingMachine);
             if (turingMachine.isHalted()) {
-                displayMachineState(turingMachine);
+                IO_HANDLER.println("Die Turingmaschine hat angehalten.");
+                break;
             }
-        } else {
-            turingMachine.run();
-            IO_HANDLER.println("Berechnung abgeschlossen.");
+            if (stepMode) {
+                IO_HANDLER.waitForEnter("Drücken Sie Enter für den nächsten Schritt...");
+            }
+        } while (turingMachine.step());
+
+        if (turingMachine.isHalted()) {
             displayMachineState(turingMachine);
         }
     }
@@ -100,6 +96,13 @@ public class Main {
             IO_HANDLER.println("\n" + separator);
             IO_HANDLER.println("STATUS: TM ANGEHALTEN");
             IO_HANDLER.println("ERGEBNIS: " + turingMachine.getResult());
+
+            if (turingMachine.getCurrentState() == 2) {
+                IO_HANDLER.println("EINGABE: Akzeptiert");
+            } else {
+                IO_HANDLER.println("EINGABE: Abgelehnt");
+            }
+
             IO_HANDLER.println(separator);
         }
     }

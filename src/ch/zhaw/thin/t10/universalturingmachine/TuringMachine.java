@@ -84,13 +84,6 @@ public class TuringMachine {
     }
 
     /**
-     * Führt die Turingmaschine bis zum Halt aus
-     */
-    public void run() {
-        while (step()) {}
-    }
-
-    /**
      * Gibt den aktuellen Zustand des Bandes zurück
      *
      * @return String mit dem aktuellen Zustand des Bandes
@@ -98,13 +91,13 @@ public class TuringMachine {
     public String getTapeState() {
         StringBuilder result = new StringBuilder();
 
-        for (int i = headPosition - 15; i <= headPosition + 15; i++) {
-            if (i < 0 || i >= tape.size()) {
-                result.append(BLANK);
-            } else {
-                result.append(tape.get(i));
-            }
+        result.append(String.valueOf(BLANK).repeat(15));
+
+        for (char c : tape) {
+            result.append(c);
         }
+
+        result.append(String.valueOf(BLANK).repeat(15));
 
         return result.toString();
     }
@@ -128,9 +121,7 @@ public class TuringMachine {
     public String getResult() {
         StringBuilder result = new StringBuilder();
         for (char c : tape) {
-            if (c != BLANK) {
-                result.append(c);
-            }
+            result.append(c);
         }
         return result.toString();
     }
