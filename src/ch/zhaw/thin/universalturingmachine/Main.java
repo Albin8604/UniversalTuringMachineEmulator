@@ -1,4 +1,4 @@
-package ch.zhaw.thin.t10.universalturingmachine;
+package ch.zhaw.thin.universalturingmachine;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ch.zhaw.thin.t10.universalturingmachine;
+package ch.zhaw.thin.universalturingmachine;
 
 /**
  * Klasse für die Transition einer Turingmaschine
